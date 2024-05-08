@@ -49,12 +49,16 @@ def recursive_walk(source_path, destination_path=None):
         print(f"Помилка обробки папки {source_path}: {e}")
 
 
-if __name__ == "__main__":
-    root = Path(
-        "/Users/avlady/Desktop/GOIT/Algorithms/goit-algo-hw-03/goit-algo-hw-03/task_1"
-    )
-    destin = Path(
-        "/Users/avlady/Desktop/GOIT/Algorithms/goit-algo-hw-03/goit-algo-hw-03/Destination"
-    )
-
+def main():
+    root_path = input("Введіть шлях до папки: ")
+    destin_path = input("Введіть шлях до папки для копіювання: ")
+    
+    root = Path(root_path)
+    destin = Path(destin_path)
+    
     recursive_walk(root, destin)
+
+
+
+if __name__ == "__main__":
+    main()
