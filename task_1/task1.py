@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 import shutil
 import os
@@ -49,15 +50,20 @@ def recursive_walk(source_path, destination_path=None):
         print(f"Помилка обробки папки {source_path}: {e}")
 
 
+
 def main():
-    root_path = input("Введіть шлях до папки: ")
-    destin_path = input("Введіть шлях до папки для копіювання: ")
+    parser = argparse.ArgumentParser(description="Рекурсивно копіює файли з вихідної директорії до директорії призначення, розділені за форматом.")
+    parser.add_argument("source", help="Шлях до вихідної директорії")
+    parser.add_argument("-d", "--destination", help="Шлях до директорії призначення (за замовчуванням - 'dist')", default="dist")
+    args = parser.parse_args()
+
+    root_path = args.source
+    destin_path = args.destination
     
     root = Path(root_path)
     destin = Path(destin_path)
     
     recursive_walk(root, destin)
-
 
 
 if __name__ == "__main__":
